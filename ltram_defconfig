@@ -1,0 +1,26 @@
+# generated May 4 11:54AM by Katherine Mohr
+# based on qemu_x86_64_defconfig
+
+BR2_x86_64=y
+BR2_TOOLCHAIN_BUILDROOT_CXX=y
+BR2_GLOBAL_PATCH_DIR="board/qemu/patches"
+BR2_DOWNLOAD_FORCE_CHECK_HASHES=y
+
+# TODO: not sure if relative paths work, update this with your overlay dir
+BR2_ROOTFS_OVERLAY="/export/home/katm/workspace/ltram-policy-bench/overlay"
+
+BR2_ROOTFS_POST_BUILD_SCRIPT="board/qemu/x86_64/post-build.sh"
+BR2_ROOTFS_POST_IMAGE_SCRIPT="board/qemu/post-image.sh"
+BR2_ROOTFS_POST_SCRIPT_ARGS="$(BR2_DEFCONFIG)"
+
+# need redis for the ycsb benchmark
+BR2_PACKAGE_REDIS=y
+
+BR2_PACKAGE_NCURSES=y
+
+# need numactl to manually control allocations from userspace
+BR2_PACKAGE_NUMACTL=y
+
+# generate an ext2 image, not tar
+BR2_TARGET_ROOTFS_EXT2=y
+# BR2_TARGET_ROOTFS_TAR is not set
